@@ -9,7 +9,7 @@ import io
 import json
 #--
 #Importing the bot developers list from config
-with open('Data/Config.json') as file:
+with open('Data/config.json') as file:
     config = json.load(file)
 
 botDevelopers = config["botDevelopers"]
