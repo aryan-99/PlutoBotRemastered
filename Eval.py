@@ -8,7 +8,7 @@ from contextlib import redirect_stdout
 import io
 import json
 #--
-'''Importing the bot developers list from config'''
+#Importing the bot developers list from config
 with open('Data/Config.json') as file:
     config = json.load(file)
 
@@ -23,20 +23,20 @@ class eval:
 		self._last_result = None
 		self.sessions = set()
 
-	'''Creating a function to extract the code in the required format'''
+	#Creating a function to extract the code in the required format
 	def cleanup_code(self, content):
 		if content.startswith('```') and content.endswith('```'):
 			return '\n'.join(content.split('\n')[1:-1])
 
 		return content.strip('` \n')
 
-	'''Creating a function that returns the syntax errors if any are presented'''
+	#Creating a function that returns the syntax errors if any are presented
 	def get_syntax_error(self, e):
 		if e.text is None:
 			return '```py\n{}: {}\n```'.format(e.__class__.__name___, e)
 		return '```py\n{}{"^":>{}}\n{}: {}```'.format(e.text, e.offset, e.__class__.__name__, e)
 
-	'''Debugging the code'''
+	#Debugging the code
 	@commands.command(pass_context=True, hidden=True, aliases =['eval'])
 	async def debug(self, ctx, *, body: str):
 		if ctx.author.id in botDevelopers:
@@ -83,7 +83,7 @@ class eval:
 					self._last_result = ret
 					await ctx.send('```py\n{}{}\n```'.format(value, ret))
 
-'''Adding this cog to the bot'''
+#Adding this cog to the bot
 def setup(bot):
 	bot.add_cog(eval(bot))
 	print('"Eval" has been loaded successfully.')
