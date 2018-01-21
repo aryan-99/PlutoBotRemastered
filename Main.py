@@ -11,7 +11,7 @@ import json
 
 #Loading the config file which has the bot token and default prefix stored
 
-with open('Data/Config.json') as file:
+with open('Data/config.json') as file:
     config = json.load(file)
 
 token = config["token"]
